@@ -332,6 +332,13 @@ button:active {
 #quiz-screen {
   position: relative; 
 }
+#quiz-screen .question-text{
+  color: #09ff00;
+  font-family: inter, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
 
 .local-flash {
   position: absolute;
