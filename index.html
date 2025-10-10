@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Math Practice Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        
+        <div class="theme-toggle-container">
+            <input type="checkbox" id="theme-toggle" class="toggle-checkbox">
+            <label for="theme-toggle" class="toggle-label">
+                <div class="toggle-inner">
+                    <span class="icon light">☀️</span>
+                    <span class="icon dark">🌙</span>
+                    <span class="toggle-sphere"></span>
+                </div>
+            </label>
+        </div>
+
+        <h1>Math Practice Quiz 🧠</h1>
+        
+        <div id="mode-selection" class="screen active">
+            <h2>Select a Test Mode:</h2>
+            <div id="mode-buttons" class="button-grid">
+                </div>
+            <button id="mode-continue-btn" class="primary-btn hidden" disabled>Continue →</button>
+            <p id="mode-error" class="error-msg"></p>
+        </div>
+
+        <div id="range-input" class="screen hidden">
+            <h2>Set the Range (Start to End)</h2>
+            <div class="input-group">
+                <label for="start-value">Starting Value (≥ 1):</label>
+                <input type="number" id="start-value" value="1"> 
+            </div>
+            <div class="input-group">
+                <label for="end-value">Ending Value (> Start):</label>
+                <input type="number" id="end-value" value="10">
+            </div>
+            <button id="start-quiz-btn" class="primary-btn">Start Quiz</button>
+            <button id="back-to-mode-btn" class="secondary-btn">← Back</button>
+            <p id="range-error" class="error-msg"></p>
+        </div>
+
+        <div id="quiz-screen" class="screen hidden">
+            <h2 id="quiz-title"></h2>
+            <p class="score-display">Score: <span id="current-score">0</span> / <span id="total-questions">0</span></p>
+            <p class="question-text"><span id="function-name"></span> of <span id="current-number"></span>:</p>
+            
+            <div id="local-feedback-flash" class="local-flash hidden"></div>
+            
+            <div class="input-group">
+                <input type="number" id="user-answer" step="any" autofocus> 
+                <button id="submit-answer-btn" class="primary-btn">Submit</button>
+            </div>
+            <div class="quiz-controls">
+                <p id="feedback-msg" class="feedback-msg"></p>
+                <button id="skip-question-btn" class="secondary-btn hidden">Next Question »</button>
+                <button id="exit-quiz-btn" class="warning-btn">Exit Quiz</button>
+            </div>
+        </div>
+
+        <div id="results-screen" class="screen hidden">
+            <h2>Quiz Complete! 🎉</h2>
+            <p class="final-score">You scored <span id="final-score-value"></span> out of <span id="final-total-value"></span>!</p>
+            <button id="play-again-btn" class="primary-btn">Play Again</button>
+        </div>
+    </div>
+    
+    <div class="developer-info">
+        Made with ❤️ by <p class="name">Prince Kushwaha</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
