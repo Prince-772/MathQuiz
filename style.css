@@ -164,6 +164,16 @@ button:active {
 .primary-btn:hover {
   background-color: color-mix(in srgb, var(--primary-color) 90%, black);
 }
+.selection-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+.selection-btn:hover {
+  background-color: color-mix(in srgb, #20c997 90%, black);
+  box-shadow: 0 0 12px 3px rgba(59, 255, 37, 0.8);
+  border: 2px solid #08e200;
+  transform: scale(1.05);
+}
 .secondary-btn {
   background-color: var(--secondary-color);
   color: white;
@@ -192,6 +202,9 @@ button:active {
   background-color: var(--primary-color);
   margin: 0;
 }
+.button-grid button:hover {
+  background-color: #20c997;
+}
 
 .button-grid button::after {
   content: "";
@@ -215,9 +228,10 @@ button:active {
 }
 
 .button-grid button.selected {
-  box-shadow: var(--selection-glow);
-  border: 2px solid var(--primary-color);
+  box-shadow: 0 0 12px 3px rgba(59, 255, 37, 0.8);
+  border: 2px solid #08e200;
   transform: scale(1.05);
+  background-color: #20c997;
 }
 .button-grid button.selected:hover {
   transform: scale(1.05);
@@ -330,29 +344,31 @@ button:active {
 }
 
 #quiz-screen {
-  position: relative; 
+  position: relative;
 }
-#quiz-screen .question-text{
-  color: #09ff00;
-  font-family: inter, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+#quiz-screen .question-text {
+  color: #20c997;
+  font-family: inter, Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 18px;
   font-weight: 600;
 }
 
-
 .local-flash {
   position: absolute;
-  top: 50%; 
+  bottom: 100%; 
   left: 50%; 
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
   z-index: 50; 
-  font-size: 3rem;
-  font-weight: 900;
-  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 5px 15px;
   border-radius: var(--border-radius);
   color: white;
   opacity: 0;
   transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  white-space: nowrap;
 }
 
 .local-flash.correct {
@@ -363,10 +379,23 @@ button:active {
 }
 .local-flash.active {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1.1); 
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  transform: translate(-50%, -10px); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+input[type="number"].is-correct {
+    border: 2px solid var(--success-color);
+    box-shadow: 0 0 5px var(--success-color);
 }
 
+input[type="number"].is-wrong {
+    border: 2px solid var(--error-color);
+    box-shadow: 0 0 5px var(--error-color);
+}
+input:focus {
+  outline: none;
+  box-shadow: var(--selection-glow);
+  border: 2px solid var(--primary-color);
+}
 .feedback-msg {
   padding: 10px;
   margin-top: 15px;
@@ -406,10 +435,64 @@ input[type="number"] {
 }
 
 .developer-info .name {
-  color: rgb(0, 89, 254); 
+  color: rgb(0, 89, 254);
   display: inline-block;
   font-family: inter, Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-weight: 600;
+}
+
+.learn-table-scroll-wrapper {
+  max-height: 300px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid var(--secondary-color);
+  border-radius: var(--border-radius);
+  background-color: color-mix(in srgb, var(--card-background) 80%, transparent);
+}
+.learn-table-scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+.learn-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  table-layout: fixed;
+}
+
+.learn-table th,
+.learn-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+.learn-table thead th {
+  background-color: var(--primary-color);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.learn-table tbody tr {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInSlideUp 0.5s ease-out forwards;
+}
+.learn-table thead th:first-child {
+  border-radius: 10px 0 0 0;
+}
+.learn-table thead th:last-child {
+  border-radius: 0 10px 0 0;
+}
+@keyframes fadeInSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 body.dark-theme .developer-info .name {
